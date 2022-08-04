@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container disable">
 
         <h2>Easy Image Editor</h2>
 <div class="wrapper">
@@ -17,10 +17,10 @@
     <div class="filter">
         <label class="title">Filters</label>
         <div class="options">
-            <button class="active"> Brightness</button>
-            <button> Saturation</button>
-            <button> Inversion</button>
-            <button> Grayscale</button>
+            <button id="Brightness" class="active"> Brightness</button>
+            <button id="Saturation"> Saturation </button>
+            <button id="Inversion"> Inversion</button>
+            <button id="Grayscale"> Grayscale</button>
         </div>
         <div class="slider">
             <div class="filter-info">
@@ -48,6 +48,7 @@
 <div class="controls">
     <button class="reset-filter">Reset Filters</button>
     <div class="row">
+        <input type="file" class="file-input" accept = "image/*" hidden>
         <button class="choose-img">Choose Image</button>
         <button class="save-img">Save Image</button>
     </div>
@@ -55,6 +56,6 @@
     </div>
 
 
-
+<script src="./main.js"></script>
 </body>
 </html>

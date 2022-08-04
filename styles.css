@@ -23,7 +23,15 @@ img {
     border-radius: 10px;
     padding: 30px 35px 35px;
 }
-.container h3 {
+.container.disable :where(.editor-panel, .reset-filter, .save-img) {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+
+
+
+.container h2 {
     font-size: 22px;
     font-weight: 500;
 }
@@ -133,4 +141,31 @@ display:flex
     margin-left: 5px;
     background: #5372F0;
     border: 1px solid #5372F0;
+}
+@media screen and (max-width: 760px) {
+    .container {
+        padding: 25px;
+    }
+    .container .wrapper {
+        flex-wrap: wrap-reverse;
+    }
+    .wrapper .editor-panel {
+        width: 100%;
+    }
+    .wrapper .preview-img {
+        width: 100%;
+        margin: 0 0 15px;
+    }
+}
+@media screen and (max-width: 760px) {
+   .controls button {
+    width: 100%;
+    margin-bottom: 10px;
+   }
+   .controls .row {
+    width:100%;
+   }
+   .controls .row .save-img {
+    margin-left: 0px;
+   }
 }
