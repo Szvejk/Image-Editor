@@ -18,18 +18,26 @@ const loadImage = () => {
 	});
 };
 
-filterOptions.forEach((option) => {
+filterOptions.forEach(option => {
 	option.addEventListener('click', () => {
 		document.querySelector('.filter .active').classList.remove('active');
-		option.classList.add('active');
+		option.classList.add("active");
 		filterName.innerText = option.innerText;
+        
 if(option.id ==="brightness") {
-    filterSlider.value = `${brightness}%`;
+    filterSlider.value = brightness;
     filterValue.innerText = `${brightness}%`;
-}
 
-	});
+} else if (option.id === "inversion") {
+    filterSlider.value = inversion;
+    filterValue.innerText = `${inversion}%`;
+} else {
+    filterSlider.value = grayscale;
+    filterValue.innerText = `${grayscale}%`;
+}
 });
+});
+
 const updateFilter = () => {
 	filterValue.innerText = `${filterSlider.value}%`;
     const selectedFilter = document.querySelector(".filter .active");
