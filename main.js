@@ -11,10 +11,10 @@ let brightness = 100,
 	saturation = 100,
 	inversion = 0,
 	grayscale = 0;
-let rotate = 0;
+let rotate = 0, flipHorizontal = 1, flipVertical = 1;
 
 const applyFilters = () => {
-    previewImg.style.transform = `rotate(${rotate}deg)`;
+    previewImg.style.transform = `rotate(${rotate}deg) scale(${flipHorizontal}, ${flipVertical})`;
 	previewImg.style.filter = `brightness(${brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%)`;
 };
 
@@ -73,7 +73,13 @@ rotateOptions.forEach(option => {
 	option.addEventListener('click', () => {
 		if(option.id === 'left') {
 			rotate -= 90;
-		}
+		} 
+		else if(option.id === 'right') {
+			rotate += 90;
+		} 
+		else if(option.id === 'horizontal') {
+			flipHorizontal === 1 ? -1 : 1;
+		} 
         applyFilters();
 	});
 });
