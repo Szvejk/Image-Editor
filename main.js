@@ -1,16 +1,14 @@
 const fileInput = document.querySelector('.file-input'),
-	filterOptions = document.querySelectorAll('.filter button');
+filterOptions = document.querySelectorAll('.filter button');
 filterName = document.querySelector('.filter-info .name');
 filterValue = document.querySelector('.filter-info .value');
 filterSlider = document.querySelector('.slider input');
 rotateOptions = document.querySelectorAll('.rotate button');
 previewImg = document.querySelector('.preview-img img');
 chooseImgBtn = document.querySelector('.choose-img');
+resetImgBtn = document.querySelector('.reset-filter');
 
-let brightness = 100,
-	saturation = 100,
-	inversion = 0,
-	grayscale = 0;
+let brightness = 100, saturation = 100, inversion = 0, grayscale = 0;
 let rotate = 0, flipHorizontal = 1, flipVertical = 1;
 
 const applyFilters = () => {
@@ -27,7 +25,7 @@ const loadImage = () => {
 	});
 };
 
-filterOptions.forEach((option) => {
+filterOptions.forEach(option => {
 	option.addEventListener('click', () => {
 		document.querySelector('.filter .active').classList.remove('active');
 		option.classList.add('active');
@@ -57,9 +55,9 @@ const updateFilter = () => {
 	filterValue.innerText = `${filterSlider.value}%`;
 	const selectedFilter = document.querySelector('.filter .active');
 
-	if (selectedFilter.id === 'Brightness') {
+	if(selectedFilter.id === 'brightness') {
 		brightness = filterSlider.value;
-	} else if (selectedFilter.id === 'Saturation') {
+	} else if (selectedFilter.id === 'saturation') {
 		saturation = filterSlider.value;
 	} else if (selectedFilter.id === 'inversion') {
 		inversion = filterSlider.value;
@@ -78,11 +76,21 @@ rotateOptions.forEach(option => {
 			rotate += 90;
 		} 
 		else if(option.id === 'horizontal') {
-			flipHorizontal === 1 ? -1 : 1;
-		} 
+			flipHorizontal = flipHorizontal === 1 ? -1 : 1;
+		} else {
+			flipVertical = flipVertical === 1 ? -1 : 1;
+		}
         applyFilters();
 	});
 });
+
+const resetFilter = () => {
+ brightness = 100, saturation = 100, inversion = 0, grayscale = 0;
+rotate = 0, flipHorizontal = 1, flipVertical = 1;
+}
+
+// resetFilterBtn.addEventListener("click", resetFilter);
 fileInput.addEventListener('change', loadImage);
 filterSlider.addEventListener('input', updateFilter);
+
 chooseImgBtn.addEventListener('click', () => fileInput.click());
